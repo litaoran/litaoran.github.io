@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article Title — Taoran</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:    #1a1a1a;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #fafafa;
+      --accent:  #2563eb;
+      --tag-bg:  #eff6ff;
+      --tag-text:#1d4ed8;
+      --max-w:   680px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0 1.25rem;
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 0;
+    }
+
+    .top-nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .top-nav a:hover { color: var(--accent); }
+
+    /* ── Article header ── */
+    .article-header {
+      max-width: var(--max-w);
+      margin: 2rem auto 0;
+    }
+
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    .article-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+    }
+
+    .article-meta {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .divider {
+      max-width: var(--max-w);
+      margin: 2rem auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      max-width: var(--max-w);
+      margin: 0 auto 5rem;
+      font-size: 1rem;
+    }
+
+    .article-body h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 2.25rem 0 0.75rem;
+      letter-spacing: -0.015em;
+    }
+
+    .article-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+    }
+
+    .article-body p { margin-bottom: 1.1rem; }
+
+    .article-body ul, .article-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .article-body li { margin-bottom: 0.35rem; }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--border);
+      padding-left: 1rem;
+      color: var(--muted);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    .article-body a { color: var(--accent); }
+
+    .article-body strong { font-weight: 600; }
+
+    /* ── Footer nav ── */
+    .bottom-nav {
+      max-width: var(--max-w);
+      margin: 0 auto 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .bottom-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .bottom-nav a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="../index.html">← All articles</a>
+</nav>
+
+<header class="article-header">
+  <div class="article-tags">
+    <span class="tag">Market Research</span>
+    <span class="tag">AI</span>
+  </div>
+  <h1>Your Article Title Goes Here</h1>
+  <div class="article-meta">June 24, 2026 · 5 min read</div>
+</header>
+
+<hr class="divider" />
+
+<article class="article-body">
+
+  <p>Your article content starts here. This is the opening paragraph — make it compelling.</p>
+
+  <h2>Section Heading</h2>
+
+  <p>Body text goes here. Write naturally; the styles will handle the rest.</p>
+
+  <ul>
+    <li>Bullet point one</li>
+    <li>Bullet point two</li>
+    <li>Bullet point three</li>
+  </ul>
+
+  <blockquote>
+    A notable quote or key insight worth highlighting.
+  </blockquote>
+
+  <h2>Another Section</h2>
+
+  <p>Continue writing here.</p>
+
+</article>
+
+<nav class="bottom-nav">
+  <a href="../index.html">← Back to all articles</a>
+</nav>
+
+</body>
+</html>

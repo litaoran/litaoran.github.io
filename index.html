@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taoran — AI Research & Writing</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:       #1a1a1a;
+      --muted:      #6b7280;
+      --border:     #e5e7eb;
+      --bg:         #fafafa;
+      --bg-card:    #ffffff;
+      --accent:     #2563eb;
+      --tag-bg:     #eff6ff;
+      --tag-text:   #1d4ed8;
+      --max-w:      720px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1.25rem;
+    }
+
+    /* ── Header ── */
+    header {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    nav {
+      margin-top: 1.25rem;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .15s;
+    }
+
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      max-width: var(--max-w);
+      margin: 2rem auto 0;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Article list ── */
+    main {
+      max-width: var(--max-w);
+      margin: 2rem auto 5rem;
+    }
+
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .article-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity .15s;
+    }
+
+    .article-item:hover { opacity: 0.72; }
+
+    .article-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 5rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .article-body { flex: 1; }
+
+    .article-title {
+      font-size: 0.975rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .article-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      line-height: 1.45;
+    }
+
+    .article-tags {
+      margin-top: 0.45rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    /* ── Empty state ── */
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 4rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .article-item { flex-direction: column; gap: 0.2rem; }
+      .article-date { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Taoran</h1>
+  <p>AI-assisted research, market analysis, and essays.</p>
+  <nav>
+    <a href="index.html" class="active">All</a>
+    <a href="https://github.com/taoran" target="_blank">GitHub</a>
+  </nav>
+</header>
+
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-tag="all">All</button>
+</div>
+
+<main>
+  <div class="article-list" id="articleList"></div>
+  <div class="empty" id="emptyState" style="display:none">No articles yet.</div>
+</main>
+
+<footer>
+  <span>© 2026 Taoran</span>
+  <span>Powered by AI · Curated by human</span>
+</footer>
+
+<script>
+  // ── Article data ── add entries here to publish
+  const articles = [
+    // {
+    //   title: "Your Article Title",
+    //   desc:  "A one-line summary shown in the list.",
+    //   date:  "2026-06-24",
+    //   tags:  ["Market Research", "AI"],
+    //   href:  "articles/your-article.html"
+    // },
+  ];
+
+  // ── Render ──
+  const listEl   = document.getElementById('articleList');
+  const emptyEl  = document.getElementById('emptyState');
+  const filterEl = document.getElementById('filterBar');
+
+  function formatDate(iso) {
+    const [y, m, d] = iso.split('-');
+    return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function render(tag) {
+    const filtered = tag === 'all' ? articles : articles.filter(a => a.tags.includes(tag));
+    listEl.innerHTML = '';
+    if (!filtered.length) { emptyEl.style.display = ''; return; }
+    emptyEl.style.display = 'none';
+    filtered.sort((a, b) => b.date.localeCompare(a.date)).forEach(a => {
+      listEl.insertAdjacentHTML('beforeend', `
+        <a class="article-item" href="${a.href}">
+          <span class="article-date">${formatDate(a.date)}</span>
+          <div class="article-body">
+            <div class="article-title">${a.title}</div>
+            ${a.desc ? `<div class="article-desc">${a.desc}</div>` : ''}
+            <div class="article-tags">${a.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        </a>`);
+    });
+  }
+
+  // Build tag filter buttons
+  const allTags = [...new Set(articles.flatMap(a => a.tags))].sort();
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.tag = tag;
+    btn.textContent = tag;
+    filterEl.appendChild(btn);
+  });
+
+  filterEl.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    filterEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.tag);
+  });
+
+  render('all');
+</script>
+</body>
+</html>
