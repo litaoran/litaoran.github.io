@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMD: The Only Credible Rival — Taoran</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:    #1a1a1a;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #fafafa;
+      --accent:  #2563eb;
+      --tag-bg:  #eff6ff;
+      --tag-text:#1d4ed8;
+      --max-w:   680px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0 1.25rem;
+    }
+
+    .top-nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 0;
+    }
+    .top-nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .top-nav a:hover { color: var(--accent); }
+
+    .article-header {
+      max-width: var(--max-w);
+      margin: 2rem auto 0;
+    }
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+    .article-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+    }
+    .article-meta {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .divider {
+      max-width: var(--max-w);
+      margin: 2rem auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-body {
+      max-width: var(--max-w);
+      margin: 0 auto 5rem;
+      font-size: 1rem;
+    }
+    .article-body h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 2.25rem 0 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .article-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+    }
+    .article-body p { margin-bottom: 1.1rem; }
+    .article-body ul, .article-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .article-body li { margin-bottom: 0.35rem; }
+    .article-body blockquote {
+      border-left: 3px solid var(--border);
+      padding-left: 1rem;
+      color: var(--muted);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+    .article-body a { color: var(--accent); }
+    .article-body strong { font-weight: 600; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      min-width: 360px;
+    }
+    .article-body th {
+      background: #f3f4f6;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .article-body td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+    }
+    .article-body tr:last-child td { border-bottom: none; }
+
+    .pos-map {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      font-family: "SF Mono", "Fira Code", "Courier New", monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      white-space: pre;
+      color: #374151;
+    }
+
+    .scenarios {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .scenario-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .scenario-card.bull { border-left: 3px solid #16a34a; }
+    .scenario-card.base { border-left: 3px solid #2563eb; }
+    .scenario-card.bear { border-left: 3px solid #dc2626; }
+    .scenario-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .scenario-card.bull .scenario-label { color: #16a34a; }
+    .scenario-card.base .scenario-label { color: #2563eb; }
+    .scenario-card.bear .scenario-label { color: #dc2626; }
+    .scenario-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .scenario-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .summary-box {
+      background: var(--tag-bg);
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .summary-box p { margin-bottom: 0.65rem; }
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    .sources {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 1.25rem;
+    }
+    .sources li { margin-bottom: 0.3rem; }
+    .sources a { color: var(--muted); }
+    .sources a:hover { color: var(--accent); }
+    .disclaimer {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    .bottom-nav {
+      max-width: var(--max-w);
+      margin: 0 auto 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .bottom-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .bottom-nav a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="../index.html">&larr; All articles</a>
+</nav>
+
+<header class="article-header">
+  <div class="article-tags">
+    <span class="tag">AI Slop</span>
+    <span class="tag">Market Research</span>
+    <span class="tag">Semiconductors</span>
+  </div>
+  <h1>AMD: The Only Credible Rival</h1>
+  <div class="article-meta">June 24, 2026 &middot; 15 min read &middot; AI-generated research note</div>
+</header>
+
+<hr class="divider" />
+
+<article class="article-body">
+
+<p>Advanced Micro Devices is the only company simultaneously challenging NVIDIA in AI accelerators and beating Intel in server CPUs. That combination &mdash; rare in any industry cycle &mdash; is what makes AMD's investment thesis compelling and its 61&times; forward P/E defensible, if not comfortable.</p>
+
+<p>This note covers the competitive landscape across all three players, AMD's forward product roadmap through 2027, the export control overhang, and bull/base/bear scenarios with concrete signposts for each.</p>
+
+<h2>1. Market Context &mdash; Semiconductors at an Inflection</h2>
+
+<p>The AI accelerator market is the defining growth market of this decade. Multiple independent forecasts converge on a 30&ndash;32% CAGR through 2030, with GPUs retaining roughly 73% of revenue share in 2025.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Year</th><th>AI Accelerator TAM</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>2024</td><td>~$140B</td><td>SNS Insider</td></tr>
+    <tr><td>2025</td><td>~$207B [E]</td><td>Omdia</td></tr>
+    <tr><td>2026</td><td>~$250B [E]</td><td>Multiple</td></tr>
+    <tr><td>2028</td><td>~$300&ndash;400B [E]</td><td>Consensus range</td></tr>
+    <tr><td>2030</td><td>~$440&ndash;600B [E]</td><td>Fortune BI / NextPlatform</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Demand is driven by hyperscaler capex surges (Microsoft, Google, Meta, Amazon all accelerating AI infrastructure investment), enterprise AI inference buildout, and an AI PC refresh cycle. Headwinds are real: US&ndash;China export controls, custom ASIC development by hyperscalers, and a muted gaming GPU replacement cycle.</p>
+
+<p>On the x86 server front, AMD's EPYC hit <strong>46.2% of server CPU revenue in Q1 2026</strong> &mdash; an all-time record &mdash; despite holding only 27.4% of units. AMD is systematically winning the most expensive servers.</p>
+
+<h2>2. Industry Economics &mdash; The Fabless Advantage</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Model</th><th>AMD</th><th>NVIDIA</th><th>Intel</th></tr></thead>
+  <tbody>
+    <tr><td>Fab ownership</td><td>Fabless (TSMC)</td><td>Fabless (TSMC)</td><td>IDM (own fabs)</td></tr>
+    <tr><td>Gross margin</td><td>~50&ndash;53%</td><td>~75%+</td><td>~35%</td></tr>
+    <tr><td>CapEx drag</td><td>None</td><td>None</td><td>Heavy</td></tr>
+    <tr><td>Process risk</td><td>Depends on TSMC</td><td>Depends on TSMC</td><td>In-house execution</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>AMD's fabless model has structurally won the debate with Intel's IDM approach. The question is no longer whether Intel's manufacturing strategy was a mistake &mdash; it was &mdash; but how long Intel's turnaround takes, and whether AMD can close the AI GPU gap with NVIDIA before the next architecture cycle.</p>
+
+<p>One risk to flag: AMD and NVIDIA both rely on TSMC for leading-edge nodes (3nm today, 2nm in 2026). They compete for the same wafer allocation. As TSMC 2nm capacity scales, this constraint eases &mdash; but it is real in the near term.</p>
+
+<h2>3. AMD at a Glance</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Segment</th><th>Revenue (FY2024)</th><th>% of Total</th><th>YoY</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Data Center</strong></td><td>$12.6B</td><td>49%</td><td>+94%</td></tr>
+    <tr><td>Client</td><td>$7.1B</td><td>27%</td><td>+52%</td></tr>
+    <tr><td>Embedded</td><td>$3.6B</td><td>14%</td><td>Recovering</td></tr>
+    <tr><td>Gaming</td><td>$2.6B</td><td>10%</td><td>&minus;58%</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>~$25.8B</strong></td><td><strong>100%</strong></td><td><strong>~+14%</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>AMD is two businesses in one. The Data Center franchise &mdash; Instinct AI GPUs and EPYC server CPUs &mdash; is compounding at extraordinary rates. Gaming and Embedded drag down the headline. Investors are right to look through it: Data Center is 49% of revenue and growing at nearly 100% year over year.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Stock price (June 2026)</td><td>~$500 [E]</td></tr>
+    <tr><td>Forward P/E</td><td>61&times;</td></tr>
+    <tr><td>Analyst consensus</td><td>Strong Buy (86% Buy / Strong Buy)</td></tr>
+    <tr><td>Avg. 12-month price target</td><td>~$488&ndash;500</td></tr>
+    <tr><td>YTD stock performance</td><td>+132.6%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>4. The Three-Player Map</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Posture</th><th>Company</th><th>Primary battleground</th></tr></thead>
+  <tbody>
+    <tr><td>AI Accelerator Dominant</td><td><strong>NVIDIA</strong></td><td>Blackwell/Rubin GPUs, CUDA ecosystem, hyperscaler AI training</td></tr>
+    <tr><td>Dual-Market Challenger</td><td><strong>AMD</strong></td><td>Instinct AI GPUs (challenger), EPYC CPUs (leader-in-progress)</td></tr>
+    <tr><td>Structural Turnaround</td><td><strong>Intel</strong></td><td>Xeon CPUs (defending), Panther Lake client, 18A node (proof point)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>NVIDIA is a pure-play on accelerated computing &mdash; no CPU business to distract, software-first via CUDA. AMD competes on two fronts simultaneously: a diversification strength and a focus risk. Intel is running a turnaround under new CEO Lip-Bu Tan, with the 18A process node as the make-or-break proof point.</p>
+
+<h2>5. Positioning Map &mdash; AI Capability vs. Product Breadth</h2>
+
+<div class="pos-map">            HIGH AI CAPABILITY
+                     |
+        NVIDIA &#9679;     |
+                     |
+  Narrow ────────────+──────────────── Broad
+  product            |              product
+  breadth            |       AMD &#9679;  breadth
+                     |
+             Intel &#9679; |
+                     |
+            LOW AI CAPABILITY</div>
+
+<p>NVIDIA dominates on AI capability with a narrow product focus. AMD has broad products &mdash; CPU, GPU, and FPGA via Xilinx &mdash; with rapidly improving AI capability. Intel has broad products but lags significantly on AI and is executing a recovery from a process disadvantage.</p>
+
+<h2>6. Competitor Deep-Dives</h2>
+
+<h3>NVIDIA</h3>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue (FY2026)</td><td>$215.9B (+65% YoY)</td></tr>
+    <tr><td>Gross margin</td><td>~75%+</td></tr>
+    <tr><td>Operating margin</td><td>~60%+ [E]</td></tr>
+    <tr><td>Market cap</td><td>~$3.3T [E]</td></tr>
+    <tr><td>Server GPU share</td><td>~80&ndash;85% [E]</td></tr>
+    <tr><td>Forward revenue visibility</td><td>$500B (Blackwell + Rubin through end-2026)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Category</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td>Strengths</td><td>CUDA ecosystem lock-in (10M+ developers); annual GPU architecture cadence; NVLink networking; software-defined competitive moat; $500B revenue visibility</td></tr>
+    <tr><td>Weaknesses</td><td>Extreme valuation risk; hyperscaler concentration (~50% revenue from top 4); ASIC threat from custom silicon; China export restrictions cap a key market</td></tr>
+    <tr><td>Roadmap</td><td>Rubin GPU (H2 2026, HBM4, next-gen NVLink); Vera Rubin system (~2027); deepening push into agentic AI, robotics, and physical AI</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Intel</h3>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue (FY2025)</td><td>$52.9B</td></tr>
+    <tr><td>Gross margin</td><td>34.8%</td></tr>
+    <tr><td>Operating margin</td><td>&minus;4.2%</td></tr>
+    <tr><td>Market cap</td><td>~$100&ndash;120B [E]</td></tr>
+    <tr><td>Server CPU unit share</td><td>~71%</td></tr>
+    <tr><td>Server CPU revenue share</td><td>~54% [E] and falling</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Category</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td>Strengths</td><td>Massive Xeon installed base in enterprise; Panther Lake on 18A is a credible architectural proof point; Lip-Bu Tan's engineering-first cultural refocus</td></tr>
+    <tr><td>Weaknesses</td><td>Operating losses; Gaudi AI accelerator with minimal market traction; losing server revenue share to AMD every quarter; years of process delays still haunt customer confidence</td></tr>
+    <tr><td>Roadmap</td><td>Panther Lake (18A, client, H2 2026); Clearwater Forest (18A, server, 2026); Nova Lake (client, 2027); 14A process node (2027&ndash;2028)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>7. Side-by-Side Scorecard</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Dimension</th><th>AMD</th><th>NVIDIA</th><th>Intel</th></tr></thead>
+  <tbody>
+    <tr><td>Scale</td><td>&#9679;&#9679;&#9675; ~$26B</td><td>&#9679;&#9679;&#9679; $216B</td><td>&#9679;&#9679;&#9679; $53B</td></tr>
+    <tr><td>Revenue growth</td><td>&#9679;&#9679;&#9679; DC +94%</td><td>&#9679;&#9679;&#9679; +65%</td><td>&#9679;&#9675;&#9675; ~flat</td></tr>
+    <tr><td>Gross margin</td><td>&#9679;&#9679;&#9675; ~50%</td><td>&#9679;&#9679;&#9679; ~75%</td><td>&#9679;&#9675;&#9675; ~35%</td></tr>
+    <tr><td>AI GPU position</td><td>&#9679;&#9679;&#9675; MI350&rarr;MI400</td><td>&#9679;&#9679;&#9679; Blackwell&rarr;Rubin</td><td>&#9679;&#9675;&#9675; Gaudi negligible</td></tr>
+    <tr><td>Server CPU</td><td>&#9679;&#9679;&#9679; 46% revenue share</td><td>N/A</td><td>&#9679;&#9679;&#9675; Declining</td></tr>
+    <tr><td>Software ecosystem</td><td>&#9679;&#9675;&#9675; ROCm improving</td><td>&#9679;&#9679;&#9679; CUDA moat</td><td>&#9679;&#9675;&#9675; oneAPI limited</td></tr>
+    <tr><td>Moat strength</td><td>&#9679;&#9679;&#9675; Moderate</td><td>&#9679;&#9679;&#9679; Strong</td><td>&#9679;&#9675;&#9675; Weak</td></tr>
+    <tr><td>Valuation</td><td>&#9679;&#9675;&#9675; 61&times; fwd P/E</td><td>&#9679;&#9675;&#9675; Premium</td><td>&#9679;&#9679;&#9675; Distressed value</td></tr>
+    <tr><td>Execution risk</td><td>&#9679;&#9679;&#9675; Low-moderate</td><td>&#9679;&#9679;&#9675; Low</td><td>&#9679;&#9675;&#9675; High</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>8. Strategic Moves &amp; Risks</h2>
+
+<h3>Xilinx integration &mdash; now bearing fruit</h3>
+<p>The $49B Xilinx acquisition (closed 2022) enriches AMD's Data Center and Embedded segments with FPGA and adaptive computing IP. The Pensando DPU feeds directly into the Helios rack-scale platform launching in 2026. Integration synergies took longer than expected; the asset quality is proving out.</p>
+
+<h3>Hyperscaler relationships</h3>
+<p>AMD Instinct GPUs are deployed at Microsoft Azure, Google Cloud, and Meta &mdash; providing diversification against NVIDIA concentration risk. EPYC CPUs are standard across nearly all major cloud providers' AMD-optimized instances. These relationships de-risk AMD's revenue profile, but they don't eliminate NVIDIA's dominance in AI training workloads.</p>
+
+<h3>Export controls &mdash; a structural drag</h3>
+<p>AMD recognized an <strong>$800M inventory charge</strong> in Q1 2025 on restricted AI chips bound for China, with a full-year 2025 export control headwind of approximately <strong>$1.5B in lost revenue</strong>. China still represents ~20% of AMD's total revenue, increasingly from non-restricted categories. The MI325X now requires individual export licenses for Chinese shipments as of January 2026.</p>
+<p>The critical watch item: <strong>BIS could expand restrictions to EPYC CPUs</strong>. That would be a materially larger revenue hit than AI GPU controls alone.</p>
+
+<h3>ASIC competitive threat</h3>
+<p>Google TPU v5, Amazon Trainium 2, and Microsoft Maia 2 are maturing custom silicon alternatives. Near-term, ASICs complement merchant GPUs. Long-term, as model architectures standardize, ASIC efficiency advantages grow. AMD's best defense: the inference market is growing faster than training, and enterprise customers without chip engineering teams cannot design their own silicon.</p>
+
+<h2>9. Catalysts &amp; Risks Timeline</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Timeline</th><th>Event</th><th>Signal</th></tr></thead>
+  <tbody>
+    <tr><td>H2 2026</td><td>MI400 launch &mdash; 10&times; perf. vs. MI350; HBM4 (432GB, 19.6 TB/s)</td><td>Bullish &mdash; critical to compete with Rubin</td></tr>
+    <tr><td>H2 2026</td><td>EPYC Venice (Zen 6) launch &mdash; up to 256 cores, 2nm process</td><td>Bullish &mdash; extends server CPU lead over Intel</td></tr>
+    <tr><td>H2 2026</td><td>Helios rack-scale system &mdash; Venice + MI400 + Pensando Vulcano NIC</td><td>Bullish &mdash; system-level competition with NVIDIA DGX</td></tr>
+    <tr><td>H2 2026</td><td>NVIDIA Rubin launch</td><td>Risk &mdash; could widen performance gap if MI400 lags</td></tr>
+    <tr><td>2026</td><td>Intel Panther Lake mass production on 18A</td><td>Risk &mdash; client CPU competition intensifies if yields hold</td></tr>
+    <tr><td>2026</td><td>US BIS export control review cycle</td><td>Risk &mdash; expansion to EPYC would be severe</td></tr>
+    <tr><td>Q3&ndash;Q4 2026</td><td>Hyperscaler MI400 design-win announcements</td><td>Critical bull signal &mdash; watch AMD earnings calls closely</td></tr>
+    <tr><td>2027</td><td>EPYC Verano + MI500 roadmap announcement</td><td>Bullish &mdash; confirms annual AI GPU cadence</td></tr>
+    <tr><td>2027</td><td>Hyperscaler ASIC maturity (Google, Amazon, Microsoft)</td><td>Risk &mdash; training GPU TAM compression for merchant silicon</td></tr>
+    <tr><td>Ongoing</td><td>ROCm framework adoption milestones</td><td>Bullish &mdash; each framework win expands addressable AI market</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>10. Moat Assessment</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Moat type</th><th>AMD</th><th>NVIDIA</th><th>Intel</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Network effects</strong></td><td>Weak &mdash; ROCm developer community growing but small vs. CUDA</td><td>Strong &mdash; 10M+ CUDA developers; every new model defaults to CUDA</td><td>Moderate &mdash; legacy ISV Xeon ecosystem, eroding</td></tr>
+    <tr><td><strong>Switching costs</strong></td><td>Moderate &mdash; EPYC requalification is slow and expensive; GPU switching requires ROCm port</td><td>Strong &mdash; CUDA rewrites are enormously costly; PyTorch defaults to CUDA</td><td>Moderate &mdash; Xeon switching costs in enterprise, weakening</td></tr>
+    <tr><td><strong>Scale economies</strong></td><td>Moderate &mdash; fabless R&amp;D leverage; TSMC volume advantages at scale</td><td>Strong &mdash; $216B revenue funds unmatched R&amp;D and supply chain priority</td><td>Low &mdash; IDM advantages eroded by TSMC process lead</td></tr>
+    <tr><td><strong>Intangible assets</strong></td><td>Moderate &mdash; x86 perpetual license; Xilinx FPGA IP; CDNA/RDNA architecture IP</td><td>Strong &mdash; CUDA IP; NVLink patents; cuDNN/TensorRT libraries</td><td>Moderate &mdash; x86 license (jointly held with AMD); 18A process IP if successful</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Verdict:</strong> AMD's moat is real but narrower than NVIDIA's. In CPUs, AMD's moat is strong and widening &mdash; EPYC switching costs are high and Intel's competitive position is structurally weakening. In AI GPUs, AMD's moat is primarily price-performance. Closing the software gap &mdash; ROCm reaching CUDA parity for inference workloads &mdash; is the single most important strategic variable for AMD's long-term AI GPU positioning.</p>
+
+<h2>11. Investment Scenarios</h2>
+
+<div class="scenarios">
+  <div class="scenario-card bull">
+    <div class="scenario-label">Bull &mdash; 30% probability</div>
+    <div class="scenario-title">MI400 executes; ROCm achieves inference parity; EPYC crosses 50% server revenue</div>
+    <div class="scenario-meta">FY2027E Revenue: $40&ndash;45B &middot; Key signal: MI400 design wins at &ge;3 hyperscalers by Q4 2026; ROCm added as default backend to vLLM / LlamaIndex</div>
+  </div>
+  <div class="scenario-card base">
+    <div class="scenario-label">Base &mdash; 50% probability</div>
+    <div class="scenario-title">Steady AI GPU share gains; EPYC holds ~45%; gaming depressed; China restrictions stable</div>
+    <div class="scenario-meta">FY2027E Revenue: $32&ndash;36B &middot; Key signal: MI400 ships on schedule; Data Center grows to $16&ndash;18B annualized by end of 2026; no new BIS restrictions</div>
+  </div>
+  <div class="scenario-card bear">
+    <div class="scenario-label">Bear &mdash; 20% probability</div>
+    <div class="scenario-title">MI400 delayed or underperforms vs. Rubin; export controls expand to EPYC; Intel 18A surprises</div>
+    <div class="scenario-meta">FY2027E Revenue: $25&ndash;28B &middot; Key signal: MI400 delayed to H1 2027; BIS extends controls to server CPUs; AMD loses a major hyperscaler AI contract</div>
+  </div>
+</div>
+
+<h3>What to monitor</h3>
+<ul>
+  <li><strong>Bull confirmation:</strong> MI400 production ramp at Q3 2026 earnings; Data Center exceeding $15B annualized; EPYC revenue share crossing 50%; ROCm gaining native default support in major AI inference frameworks</li>
+  <li><strong>Bear warning:</strong> MI400 delay or yield issue reports; BIS expanding export controls to AMD EPYC CPUs; hyperscaler capex guidance reductions; Intel 18A achieving competitive benchmark results vs. TSMC N3</li>
+</ul>
+
+<h2>Investment Summary</h2>
+
+<div class="summary-box">
+  <p><strong>The thesis in one sentence:</strong> AMD is the only credible alternative to NVIDIA in AI accelerators while simultaneously winning the x86 CPU war against Intel &mdash; a rare combination of structural tailwinds in two large markets.</p>
+  <p><strong>The risk:</strong> At 61&times; forward earnings and +132% YTD, the stock prices in near-flawless MI400 execution. The margin for error is thin.</p>
+  <p><strong>The asymmetry:</strong> In the bull case, Data Center alone could reach $18&ndash;22B by FY2027 (from $12.6B today) as AMD captures a growing share of an expanding TAM. In the bear case, a multiple re-rate to 35&ndash;40&times; on earnings disappointment would represent a meaningful drawdown.</p>
+  <p><strong>Time horizon matters:</strong> For a 3&ndash;5 year investor, the structural tailwinds are real and durable. AMD doesn't need to beat NVIDIA &mdash; it needs to take 20&ndash;25% of a $400B+ market. For shorter horizons, risk/reward is more balanced given valuation and the MI400 execution binary in H2 2026.</p>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li><a href="https://futurumgroup.com/insights/amd-q4-fy-2025-record-data-center-and-client-momentum/" target="_blank">AMD Q4 FY2025 Data Center &amp; Client Momentum &mdash; Futurum Group</a></li>
+  <li><a href="https://stockdividendscreener.com/technology/amd-revenue-breakdown-by-segment/" target="_blank">AMD Revenue by Segment &mdash; StockDividendScreener</a></li>
+  <li><a href="https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html" target="_blank">AMD Instinct MI350 &amp; MI400 Roadmap &mdash; AMD.com</a></li>
+  <li><a href="https://www.tomshardware.com/pc-components/cpus/amds-enterprise-cpu-and-gpu-roadmap-venice-verano-zen-6-helios-and-cdna" target="_blank">AMD Zen 6 Venice &amp; MI400 2026 &mdash; Tom's Hardware</a></li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000019/q4fy26pr.htm" target="_blank">NVIDIA FY2026 Revenue $215.9B &mdash; SEC Form 8-K</a></li>
+  <li><a href="https://closelook.net/101/nvidia-timeline/" target="_blank">NVIDIA Blackwell to Rubin Roadmap &mdash; CloseLook</a></li>
+  <li><a href="https://futurumgroup.com/insights/intel-q2-fy-2025-results-beat-on-revenue-margin-hit-by-one-time-charges/" target="_blank">Intel FY2025 Earnings &mdash; Futurum Group</a></li>
+  <li><a href="https://newsroom.intel.com/client-computing/intel-unveils-panther-lake-architecture-first-ai-pc-platform-built-on-18a" target="_blank">Intel Panther Lake on 18A &mdash; Intel Newsroom</a></li>
+  <li><a href="https://www.tomshardware.com/pc-components/cpus/amd-reaches-46-percent-of-server-x86-cpu-revenue-intel-still-controls-70-percent-of-the-consumer-pc-market-share" target="_blank">AMD EPYC 46.2% Server Revenue Share &mdash; Tom's Hardware</a></li>
+  <li><a href="https://www.theregister.com/2025/05/07/us_export_controls_on_instinct" target="_blank">AMD Export Controls $1.5B Impact &mdash; The Register</a></li>
+  <li><a href="https://techcrunch.com/2025/04/16/amd-takes-800m-charge-on-us-license-requirement-for-ai-chips/" target="_blank">AMD $800M Inventory Charge &mdash; TechCrunch</a></li>
+  <li><a href="https://www.gurufocus.com/term/forward-pe-ratio/AMD" target="_blank">AMD Forward P/E 61&times; &mdash; GuruFocus</a></li>
+  <li><a href="https://stockanalysis.com/stocks/amd/forecast/" target="_blank">AMD Price Targets &amp; Analyst Consensus &mdash; StockAnalysis</a></li>
+  <li><a href="https://omdia.tech.informa.com/pr/2025/aug/ai-data-center-chip-market-to-hit-286bn-growth-likely-peaking-as-custom-asics-gain-ground" target="_blank">AI Accelerator TAM Forecast &mdash; Omdia</a></li>
+</ul>
+
+<p class="disclaimer">This note is AI-generated for informational purposes only and does not constitute investment advice. All estimates marked [E] are third-party projections, not audited figures. Consult a qualified financial advisor before making investment decisions.</p>
+
+</article>
+
+<nav class="bottom-nav">
+  <a href="../index.html">&larr; Back to all articles</a>
+</nav>
+
+</body>
+</html>

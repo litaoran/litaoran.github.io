@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taoran — AI Research & Writing</title>
+  <title>Taoran &mdash; AI Research &amp; Writing</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,32 +27,27 @@
       padding: 0 1.25rem;
     }
 
-    /* ── Header ── */
     header {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 3.5rem 0 2.5rem;
       border-bottom: 1px solid var(--border);
     }
-
     header h1 {
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-
     header p {
       margin-top: 0.4rem;
       color: var(--muted);
       font-size: 0.95rem;
     }
-
     nav {
       margin-top: 1.25rem;
       display: flex;
       gap: 1.25rem;
     }
-
     nav a {
       font-size: 0.875rem;
       color: var(--muted);
@@ -60,10 +55,8 @@
       font-weight: 500;
       transition: color .15s;
     }
-
     nav a:hover, nav a.active { color: var(--accent); }
 
-    /* ── Filter bar ── */
     .filter-bar {
       max-width: var(--max-w);
       margin: 2rem auto 0;
@@ -71,7 +64,6 @@
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     .filter-btn {
       font-size: 0.8rem;
       font-weight: 500;
@@ -83,25 +75,21 @@
       cursor: pointer;
       transition: all .15s;
     }
-
     .filter-btn:hover, .filter-btn.active {
       background: var(--accent);
       border-color: var(--accent);
       color: #fff;
     }
 
-    /* ── Article list ── */
     main {
       max-width: var(--max-w);
       margin: 2rem auto 5rem;
     }
-
     .article-list {
       display: flex;
       flex-direction: column;
       gap: 0;
     }
-
     .article-item {
       display: flex;
       align-items: baseline;
@@ -112,9 +100,7 @@
       color: inherit;
       transition: opacity .15s;
     }
-
     .article-item:hover { opacity: 0.72; }
-
     .article-date {
       font-size: 0.8rem;
       color: var(--muted);
@@ -122,29 +108,24 @@
       min-width: 5rem;
       font-variant-numeric: tabular-nums;
     }
-
     .article-body { flex: 1; }
-
     .article-title {
       font-size: 0.975rem;
       font-weight: 600;
       line-height: 1.4;
     }
-
     .article-desc {
       font-size: 0.85rem;
       color: var(--muted);
       margin-top: 0.2rem;
       line-height: 1.45;
     }
-
     .article-tags {
       margin-top: 0.45rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
     }
-
     .tag {
       font-size: 0.72rem;
       font-weight: 500;
@@ -153,16 +134,12 @@
       background: var(--tag-bg);
       color: var(--tag-text);
     }
-
-    /* ── Empty state ── */
     .empty {
       text-align: center;
       color: var(--muted);
       padding: 4rem 0;
       font-size: 0.9rem;
     }
-
-    /* ── Footer ── */
     footer {
       max-width: var(--max-w);
       margin: 0 auto;
@@ -174,7 +151,6 @@
       font-size: 0.8rem;
       color: var(--muted);
     }
-
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--accent); }
 
@@ -191,7 +167,7 @@
   <p>AI-assisted research, market analysis, and essays.</p>
   <nav>
     <a href="index.html" class="active">All</a>
-    <a href="https://github.com/taoran" target="_blank">GitHub</a>
+    <a href="https://github.com/litaoran" target="_blank">GitHub</a>
   </nav>
 </header>
 
@@ -205,23 +181,21 @@
 </main>
 
 <footer>
-  <span>© 2026 Taoran</span>
-  <span>Powered by AI · Curated by human</span>
+  <span>&copy; 2026 Taoran</span>
+  <span>Powered by AI &middot; Curated by human</span>
 </footer>
 
 <script>
-  // ── Article data ── add entries here to publish
   const articles = [
-    // {
-    //   title: "Your Article Title",
-    //   desc:  "A one-line summary shown in the list.",
-    //   date:  "2026-06-24",
-    //   tags:  ["Market Research", "AI"],
-    //   href:  "articles/your-article.html"
-    // },
+    {
+      title: "AMD: The Only Credible Rival",
+      desc:  "AI accelerator challenger, x86 CPU winner, 61× forward P/E. A full competitive analysis with bull/base/bear scenarios.",
+      date:  "2026-06-24",
+      tags:  ["AI Slop", "Market Research", "Semiconductors"],
+      href:  "articles/amd-investment-analysis.html"
+    },
   ];
 
-  // ── Render ──
   const listEl   = document.getElementById('articleList');
   const emptyEl  = document.getElementById('emptyState');
   const filterEl = document.getElementById('filterBar');
@@ -249,7 +223,6 @@
     });
   }
 
-  // Build tag filter buttons
   const allTags = [...new Set(articles.flatMap(a => a.tags))].sort();
   allTags.forEach(tag => {
     const btn = document.createElement('button');
