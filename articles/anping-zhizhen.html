@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安平志臻：超级中学是一笔信贷，不是一所学校 — Taoran</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:    #1a1a1a;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #fafafa;
+      --accent:  #2563eb;
+      --tag-bg:  #eff6ff;
+      --tag-text:#1d4ed8;
+      --max-w:   680px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      padding: 0 1.25rem;
+    }
+
+    .top-nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 0;
+    }
+    .top-nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .top-nav a:hover { color: var(--accent); }
+
+    .article-header {
+      max-width: var(--max-w);
+      margin: 2rem auto 0;
+    }
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+    .article-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+    }
+    .article-meta {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .divider {
+      max-width: var(--max-w);
+      margin: 2rem auto;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-body {
+      max-width: var(--max-w);
+      margin: 0 auto 5rem;
+      font-size: 1rem;
+    }
+    .article-body h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 2.25rem 0 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+    }
+    .article-body p { margin-bottom: 1.1rem; }
+    .article-body ul, .article-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .article-body li { margin-bottom: 0.4rem; }
+    .article-body blockquote {
+      border-left: 3px solid var(--border);
+      padding-left: 1rem;
+      color: var(--muted);
+      margin: 1.5rem 0;
+    }
+    .article-body a { color: var(--accent); }
+    .article-body strong { font-weight: 600; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      min-width: 360px;
+    }
+    .article-body th {
+      background: #f3f4f6;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .article-body td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .article-body tr:last-child td { border-bottom: none; }
+
+    .summary-box {
+      background: var(--tag-bg);
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .summary-box p { margin-bottom: 0.65rem; }
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    .caution-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+      color: #78350f;
+      line-height: 1.65;
+    }
+    .caution-box strong { font-weight: 700; }
+
+    .kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .sources {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 1.25rem;
+    }
+    .sources li { margin-bottom: 0.3rem; }
+    .sources a { color: var(--muted); }
+    .sources a:hover { color: var(--accent); }
+
+    .disclaimer {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    .bottom-nav {
+      max-width: var(--max-w);
+      margin: 0 auto 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .bottom-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .bottom-nav a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="../index.html">&larr; All articles</a>
+</nav>
+
+<header class="article-header">
+  <div class="article-tags">
+    <span class="tag">AI Slop</span>
+    <span class="tag">China</span>
+    <span class="tag">Education</span>
+  </div>
+  <h1>安平志臻：超级中学是一笔信贷，不是一所学校</h1>
+  <div class="article-meta">2026 年 7 月 24 日 &middot; 约 10 分钟 &middot; AI 生成分析（督工方法论框架）</div>
+</header>
+
+<hr class="divider" />
+
+<article class="article-body">
+
+<div class="summary-box">
+  <div class="kicker">事件概要</div>
+  <p>河北衡水安平县的民办中学<strong>安平志臻</strong>，2018 年秋季开学，总投资超 20 亿元，2026 年高考 600 分以上 1335 人、连续四年破千。同一个夏天，它在北京银行石家庄分行的 6300 万元贷款已逾期一年多，股权被冻结并进入司法拍卖程序，衡水银行 3.2 亿元借款于 7 月到期，账面银行债务 5.33 亿元、其他债务 9 亿元。</p>
+  <p>与此同时，创办人韩士辉实名向中纪委举报四名干部以胁迫手段无偿占取学校 49% 股权、价值近 10 亿元，衡水纪委已介入调查。</p>
+</div>
+
+<div class="caution-box">
+  <strong>待核事实声明：</strong>本文中涉及股权强占、资金侵占、材料款去向的全部指控，均来自举报人单方陈述与媒体转述，纪检机关<strong>尚未公布任何立案审查结论</strong>，被点名者中三人拒接采访、一人否认认识举报人。各家报道的债务口径互相不一致（银行债务有 5.33 亿元与建设期 8.3 亿元两种说法），举报时间有 2026 年 6 月与 2024 年 6 月两种说法。以上一律应作为<strong>未经证实的待核事实</strong>阅读。本文的分析对象是制度结构，不是任何个人的刑责认定。
+</div>
+
+<h2>一、流行读法与结构读法</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>直觉反应</th><th>结构性解读</th></tr></thead>
+  <tbody>
+    <tr><td>高考工厂终于倒了，天道好还</td><td>倒的不是应试教育，是一个用公办名校品牌做抵押的信贷项目。应试教育本身毫发无损，只是从民办搬回了公办</td></tr>
+    <tr><td>少子化来了，学校当然要倒</td><td>高中学龄人口现在还在涨。2016 年出生的 1786 万人 2031 年才进高一。人口悬崖在 2032 年之后，这一轮跟人口无关</td></tr>
+    <tr><td>民办教育被政策一刀切搞死了</td><td>被掐掉的不是"办学"，是"跨省掐尖"这一项监管套利。政策方向是对的，缺的是资产与债务的退出机制</td></tr>
+    <tr><td>官员太黑，企业家太惨</td><td>举报材料里同时写着三亚别墅 670 万、迈巴赫 320 万、办公室装修 500 万。这不是掠夺与受害，是官商共生结构走到了分赃破裂阶段</td></tr>
+    <tr><td>县教育局失职</td><td>一个县教育局本就不具备审查 20 亿重资产项目杠杆率的能力。这是权责错配的制度设计问题，不是干部态度问题</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>二、这件事不始于 2025 年的贷款逾期</h2>
+
+<p>它始于 1999 年到 2002 年。</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>时间</th><th>结构性事件</th></tr></thead>
+  <tbody>
+    <tr><td>1992 年起</td><td>李金池任衡水中学校长，军事化管理成型；1999 年办复读学校招外省生源</td></tr>
+    <tr><td>1999 年</td><td>高中扩招成为硬指标，但高中不属义务教育，中央不给转移支付，县级财政自己扛</td></tr>
+    <tr><td>2000 年代</td><td>地方发明"名校办民校"：公办名校输出品牌与师资，民间资本出钱盖楼收学费。这是"公参民"的起点，也是本案的基因</td></tr>
+    <tr><td>2006 年</td><td>《义务教育法》修订堵死义务教育阶段收费办民校，模式<strong>向上迁移到高中阶段</strong>：唯一既不免费、又有全国统一排序（高考）、还能合法收高价的层级</td></tr>
+    <tr><td>2004 年后</td><td>衡水系合作办学、品牌输出，巅峰期在 11 个省铺了约 50 所学校。对人均 GDP 在河北垫底的农业市来说，教育变成了出口产业</td></tr>
+    <tr><td>2015–2018 年</td><td>土地财政高点。学校既是招商引资又是学区房发动机，城商行愿意放款。志臻 2018 年秋开学，正踩在顶点</td></tr>
+    <tr><td>2021 年</td><td>《民办教育促进法实施条例》9 月施行，八部门治理"公参民"，双减同期。河北 6 月划线：民办高中年招生上限 2000 人、外省生源不超 30%、禁止公办教师兼职。衡水二中师资撤出</td></tr>
+    <tr><td>2024 年</td><td>民办普通高中只允许在审批地招生，跨省生源基本归零</td></tr>
+    <tr><td>2025–2026 年</td><td>招生腰斩，还款中断，股权冻结进入拍卖</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>从"名校办民校"被发明，到它被取消，隔了大约二十五年。<strong>楼是在这二十五年的最后五年借钱盖的。</strong></p>
+
+<h2>三、五个重标尺度的数字</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>数字</th><th>它改变了什么判断</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>20 亿元投资 vs. 168 亿元县 GDP</strong><br />安平县常住人口 32.7 万（2020 七普），学校设计容量 2 万至 3.5 万人</td>
+      <td>一所学校吃掉全县年 GDP 的 12%，容量相当于全县人口的 6% 到 10%。它<strong>从设计之日起就在数学上不可能靠本地生源填满</strong>。政策不是意外，是把一个原本不成立的商业模型的隐含假设显性化了</td>
+    </tr>
+    <tr>
+      <td><strong>14.33 亿元债务</strong>（银行 5.33 亿 + 其他 9 亿）vs. 安平县一般公共预算收入（十亿元量级）</td>
+      <td>一所民办中学的负债接近甚至超过所在县一年的财政收入。无论怎么处置，县级财政都不可能兜底，只能由城商行与施工方吃减值</td>
+    </tr>
+    <tr>
+      <td><strong>招生腰斩</strong>：2025 年衡水市区民办高中统招 6077 人（同比 &minus;45.2%）、自费 2139 人（&minus;38.1%）。单校：滨湖志臻 1198→486，志臻实验 1102→409，泰华 1134→733</td>
+      <td>同期 600 分以上比例从峰值 67% 回落至 39.5%（另一校 46%→24.6%）。<strong>成绩随生源同步下滑，本身就是"高分来自掐尖而非教学"的实证</strong></td>
+    </tr>
+    <tr>
+      <td><strong>人口时间表</strong>：2026 年在读高中生约为 2010–2011 年出生人口（1592 万、1604 万）；峰值 2016 年 1786 万，2031 年进高一；低谷 2022–2024 年（956、902、954 万）</td>
+      <td>全国高中在校生规模到 2031–2033 年<strong>仍在上升</strong>，此后断崖式下落约四成五。现在死的这批学校死在人口红利尾声，不是死在人口衰减。下一批才是死在人口</td>
+    </tr>
+    <tr>
+      <td><strong>民办高中存量</strong>：2024 年全国 4819 所，占普通高中总数 30.59%；在校生 588.49 万人，占 20.14%</td>
+      <td>这不是边缘部门，是五分之一的高中生。任何"民办高中债务处置"都是上千所学校量级的系统问题，不是一县一校的偶发事故</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>四、权责地图：谁在最大化什么，谁承担后果</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>主体</th><th>最大化什么</th><th>失败后果落在谁身上</th></tr></thead>
+  <tbody>
+    <tr><td>安平县政府</td><td>招商引资额、教育政绩、土地开发、"县里有超级中学"</td><td>上千师生失学的政治风险，所以最后一定要出手</td></tr>
+    <tr><td>县教育局</td><td>审批合规、不出事</td><td>事后被问责"监管失明"，但从未拥有财务监管职权与专业能力</td></tr>
+    <tr><td>举办者</td><td>生源质量→高考成绩→下一年招生→现金流</td><td>股权被拍卖，建设期个人担保债务留着</td></tr>
+    <tr><td>公办名校及其管理者</td><td>品牌变现、体制外收益</td><td>2021 年后禁止兼职；目前只有举报，尚无立案公告</td></tr>
+    <tr><td>三家城商行</td><td>县域资产规模、抵押物账面价值</td><td>5.33 亿元银行债权，单一客户集中度风险</td></tr>
+    <tr><td>施工方</td><td>拿回垫资</td><td>5 亿元以上应付工程款。它们是事实上的次级债权人，也是最没有话语权的一层</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>五、为什么"官员占股"不是另一个丑闻</h2>
+
+<p>这所学校的价值不是经营创造的，是政策特许创造的。跨区域招生权、公办师资借用、土地与融资条件，这三样都由权力发放。</p>
+
+<blockquote>当一份资产的价值来自政策，那么持有政策的人最终会来主张股权。</blockquote>
+
+<p>所以"以 1 元受让股权"若属实，不是债务危机之外的第二个故事，而是同一个结构的必然产物。据举报陈述，胁迫签字发生在 2021 年 10 月，即政策收紧、学校现金流最好、举办者最需要地方关系保命的那一年。</p>
+
+<p>而这也不是"腐败还是经营不善"的二选一。举报材料自陈的行贿在先、指控的官员入股在后，两者互为条件。真正该追问的不是干部品行，而是<strong>为什么在这个制度里，一所两万人中学的所有权可以脱离任何公开程序被改写，而它的债务却可以合法地留在个人担保和施工方账上。</strong></p>
+
+<h2>六、两个国际对照</h2>
+
+<h3>韩国：选拔权是许可，不是产权</h3>
+<p>1974 年高校平准化改革取消高中入学考试，一批名门高中一夜之间失去筛选权，也失去溢价。2010 年后自律型私立高中（자사고）与外国语高中重建掐尖通道，2019 年首尔市教委取消 8 所资格，文在寅政府定 2025 年全面废止，尹锡悦政府 2024 年又推翻。结论：<strong>选拔权是政府可以随时收回的许可，而不是可以据以借款三十年的产权。</strong>韩国私立高中的应对是靠政府补助活着，即事实上半公办化。中国大概率走同一条路。</p>
+
+<h3>美国特许学校：楼是固定成本，学生数是政策变量</h3>
+<p>美国特许学校用免税市政债券盖校舍，违约率显著高于普通市政债，原因几乎完全相同：招生许可、评估续期、学区竞争任何一项变化，都直接击穿偿债覆盖率。这是志臻的同构案例，只是中国换成了城商行贷款加施工方垫资，杠杆更隐蔽、清偿顺序更混乱。</p>
+
+<p>（下一阶段的镜像是日本：少子化下 2024 年约六成私立大学招不满，私立高中靠学费无偿化补贴维持。这是中国 2032 年之后的图景。）</p>
+
+<h2>七、结论</h2>
+
+<p>安平志臻从来不是一个教育企业。它是一个<strong>用公办名校信誉作抵押、以监管套利为现金流、以县域招商引资为担保结构的重资产信贷项目</strong>。它的三块基石全部由权力发放。当 2021 年到 2024 年这三块基石被依次收回，这个资产的独立价值接近于零，因为它从未拥有过任何不依赖筛选优势的教学能力。</p>
+
+<p>1335 人过 600 分与还不上 6300 万贷款并不矛盾：<strong>前者证明筛选有效，后者证明筛选不是资产。</strong></p>
+
+<p>受众的认知错误在于把这件事读成道德事件（好学校／坏学校、清官／贪官），而它实际上是一起<strong>教育层级的地方政府融资平台违约</strong>。把"衡水模式该不该存在"当成主题，正好让所有实际承担损失的主体（施工方、城商行储户、下一届学生）从视野里消失。</p>
+
+<h2>八、追踪信号</h2>
+
+<ol>
+  <li><strong>纪委是否公告立案。</strong>若正式立案审查，说明官方选择了"干部腐败"叙事框架，学校可被救；若只作经济纠纷处理，说明选择了"经营失败"框架，拍卖照走，举报人自负债务。</li>
+  <li><strong>7 月到期的 3.2 亿元贷款与股权拍卖是否真的成交。</strong>看司法拍卖平台是否上架、流拍、还是被撤回。撤回等于政府介入协调重组，这是最可能的走向。同时看衡水银行、邢台银行的不良率披露与是否出现增资或合并动作。</li>
+  <li><strong>2026 年 9 月能否正常开学。</strong>最值得押注的结局是校园资产被县属国资在拍卖中折价接走、转为公办高中，债务减值由城商行与施工方承担。这对财政其实是理性选择：2032 年前高中学位仍然紧缺，捡便宜校舍比新建划算。</li>
+  <li><strong>同系传染。</strong>泰华中学（2026 年 5–6 月被执行超 1 亿元）、清河志臻（被执行 1.35 亿元、股权冻结）、衡水普阳、廊坊志弘。若出台针对民办高中的退出与债务处置文件（学费专户存管、举办者出资监管、杠杆上限、学生安置兜底），说明监管终于补上了 2021 年政策转向时缺失的那一环。</li>
+  <li><strong>十二年免费教育的口径变化。</strong>高中阶段财政投入的任何扩张信号，都会加速民办高中的公办化收编。</li>
+</ol>
+
+<h2>九、政策方向判断</h2>
+
+<p>方向是对的。属地招生、禁止跨省掐尖是国际通行做法，中国过去二十年的"超级中学跨省抽血"在任何发达国家教育制度里都不成立。教育公平的收益是真实的，且落在了那些原本被抽走优质生源的县市。</p>
+
+<p><strong>问题在于只做了半程。</strong>关闭一项监管套利，就会搁浅所有基于这项套利融资的资产。校外培训整治至少配套了预收费监管，民办高中什么都没配：没有杠杆约束、没有学费存管、没有举办者出资与抽资监管、没有停办时的学生安置协议、没有债务处置规则。结果是<strong>政策收益归公共部门，政策成本归城商行储户、施工方和在校学生</strong>。这不是政策错，是政策不完整。</p>
+
+<p>现实天花板要放低。高中阶段全面公办化需要稳定的地方财政，而地方财政恰恰是当下最紧的约束。可行的渐进路径是三条：明确民办高中的退出与接管程序，让风险可处置；学费预收资金强制存管，切断"用下一届学费还上一届工程款"；把举办者出资与股权变更纳入教育行政加市场监管的双备案，让私宅里签的转让协议无法生效。</p>
+
+<p>放在国际标尺上，中国正在从"用民间信贷补公共教育缺口"退回到"公共财政办公共教育"。这个方向是补课而不是超前，大约是发达国家在 1960 到 1980 年代完成的事情。进步是真实的，差距仍然是二三十年。</p>
+
+<h2>来源</h2>
+
+<ul class="sources">
+  <li><a href="https://finance.sina.com.cn/wm/2026-07-05/doc-iniftmta2717446.shtml" target="_blank" rel="noopener">超级中学神话落幕（新浪财经，2026-07-05）</a></li>
+  <li><a href="https://www.sina.cn/news/detail/5317769713160131.html" target="_blank" rel="noopener">安平志臻学校贷款逾期、股权拍卖（新浪新闻）</a></li>
+  <li><a href="https://www.sina.cn/news/detail/5317770619125776.html" target="_blank" rel="noopener">衡水民办学校债务危机（新浪新闻）</a></li>
+  <li><a href="https://www.sohu.com/a/1046440196_122483957" target="_blank" rel="noopener">起底安平志臻：一场由 20 亿投资引发的县域教育治理危机（搜狐）</a></li>
+  <li><a href="https://m.sohu.com/a/1046440258_122476635" target="_blank" rel="noopener">操场上的喜报，账面上的巨债：属地监管为何"失明"（搜狐）</a></li>
+  <li><a href="https://www.sohu.com/a/1053950140_121654186" target="_blank" rel="noopener">权力围猎民办名校：黑手掏空 20 亿超级中学（搜狐）</a></li>
+  <li><a href="https://www.sohu.com/a/1045661110_122483944" target="_blank" rel="noopener">严查"掐尖"招生：安平志臻招生缩水 45%（搜狐）</a></li>
+  <li><a href="https://www.huxiu.com/article/4872488.html" target="_blank" rel="noopener">衡水系民办中学面临债务逾期与招生政策收紧双重压力（虎嗅）</a></li>
+  <li><a href="http://www.moe.gov.cn/jyb_sjzl/sjzl_fztjgb/202506/t20250611_1193760.html" target="_blank" rel="noopener">2024 年全国教育事业发展统计公报（教育部）</a></li>
+  <li><a href="https://cbgc.scol.com.cn/news/5589058" target="_blank" rel="noopener">小县城的千亿传奇：安平丝网（川观新闻）</a></li>
+</ul>
+
+<div class="disclaimer">
+  本文为 AI 辅助生成的公开事件结构分析，采用睡前消息（马前卒工作室）方法论框架：历史溯源、制度与激励分析、数据重标、国际对照、反直觉结论。文中所有指控性内容均为媒体转述的举报人单方陈述，纪检与司法结论尚未公布，不构成对任何个人的事实认定。数据引自公开报道与官方统计公报，各家口径存在不一致，已在文中标注。不构成投资、法律或教育决策建议。
+</div>
+
+</article>
+
+<nav class="bottom-nav">
+  <a href="../index.html">&larr; Back to all articles</a>
+</nav>
+
+</body>
+</html>
